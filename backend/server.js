@@ -1,19 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
+const express = require("express");
+const cors = require("cors");
 const app = express();
-const port = 5000;
+const barangRoutes = require("./routes/barangRoutes");
 
-// Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// Routes
-const barangRoutes = require('./routes/barangRoutes');
-app.use('/barang', barangRoutes);
+app.use("/barang", barangRoutes);
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(5000, () => {
+  console.log("🚀 Server running at http://localhost:5000");
 });
